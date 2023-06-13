@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Random Cat Video</title>
+    <title>Random Cat GIF</title>
     <style>
         body {
             background-color: black;
@@ -14,7 +14,7 @@
             height: 100vh;
             font-family: Arial, sans-serif;
         }
-        .cat-video {
+        .cat-gif {
             max-width: 500px;
             max-height: 500px;
         }
@@ -22,22 +22,19 @@
 </head>
 <body>
     <div class="container">
-        <video class="cat-video" controls autoplay loop>
-            <source src="" type="video/mp4">
-        </video>
+        <img class="cat-gif" src="" alt="Cat GIF">
     </div>
 
     <script>
-        function getRandomCatVideo() {
-            fetch('https://api.thecatapi.com/v1/images/search?mime_types=mp4')
+        function getRandomCatGif() {
+            fetch('https://api.thecatapi.com/v1/images/search?mime_types=gif')
                 .then(response => response.json())
                 .then(data => {
-                    const videoSources = data.filter(image => image.url.endsWith('.mp4'));
-                    if (videoSources.length > 0) {
-                        const randomIndex = Math.floor(Math.random() * videoSources.length);
-                        const catVideo = document.querySelector('.cat-video');
-                        catVideo.src = videoSources[randomIndex].url;
-                        catVideo.load(); // 동영상 다시 로드
+                    const gifImages = data.filter(image => image.url.endsWith('.gif'));
+                    if (gifImages.length > 0) {
+                        const randomIndex = Math.floor(Math.random() * gifImages.length);
+                        const catGif = document.querySelector('.cat-gif');
+                        catGif.src = gifImages[randomIndex].url;
                     }
                 })
                 .catch(error => {
@@ -45,8 +42,7 @@
                 });
         }
 
-        getRandomCatVideo();
+        getRandomCatGif();
     </script>
 </body>
 </html>
-
