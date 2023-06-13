@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Random Cat GIF</title>
+    <title>Random Cat Image</title>
     <style>
         body {
             background-color: black;
@@ -14,7 +14,7 @@
             height: 100vh;
             font-family: Arial, sans-serif;
         }
-        .cat-gif {
+        .cat-image {
             max-width: 500px;
             max-height: 500px;
         }
@@ -22,19 +22,19 @@
 </head>
 <body>
     <div class="container">
-        <img class="cat-gif" src="" alt="Cat GIF">
+        <img class="cat-image" src="" alt="Cat Image">
     </div>
 
     <script>
-        function getRandomCatGif() {
-            fetch('https://api.thecatapi.com/v1/images/search?mime_types=gif')
+        function getRandomCatImage() {
+            fetch('https://api.thecatapi.com/v1/images/search')
                 .then(response => response.json())
                 .then(data => {
-                    const gifImages = data.filter(image => image.url.endsWith('.gif'));
-                    if (gifImages.length > 0) {
-                        const randomIndex = Math.floor(Math.random() * gifImages.length);
-                        const catGif = document.querySelector('.cat-gif');
-                        catGif.src = gifImages[randomIndex].url;
+                    const catImages = data.filter(image => image.url.endsWith('.jpg') || image.url.endsWith('.png'));
+                    if (catImages.length > 0) {
+                        const randomIndex = Math.floor(Math.random() * catImages.length);
+                        const catImage = document.querySelector('.cat-image');
+                        catImage.src = catImages[randomIndex].url;
                     }
                 })
                 .catch(error => {
@@ -42,7 +42,7 @@
                 });
         }
 
-        getRandomCatGif();
+        getRandomCatImage();
     </script>
 </body>
 </html>
