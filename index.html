@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Random Cat Videos</title>
+    <title>Random Cat Video</title>
     <style>
         body {
             background-color: black;
@@ -37,6 +37,7 @@
                         const randomIndex = Math.floor(Math.random() * videoSources.length);
                         const catVideo = document.querySelector('.cat-video');
                         catVideo.src = videoSources[randomIndex].url;
+                        catVideo.load(); // 동영상 다시 로드
                     }
                 })
                 .catch(error => {
@@ -48,3 +49,4 @@
     </script>
 </body>
 </html>
+
